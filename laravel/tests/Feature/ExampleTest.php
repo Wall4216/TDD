@@ -8,14 +8,19 @@ use Tests\TestCase;
 class ExampleTest extends TestCase
 {
     /**
-     * A basic test example.
-     *
-     * @return void
+     @test
      */
-    public function test_the_application_returns_a_successful_response()
-    {
-        $response = $this->get('/');
 
-        $response->assertStatus(200);
+    public function a_post_can_be_stored()
+    {
+        $this->withoutExceptionHandLing();
+        $data =
+            [
+                'title' => 'Some title',
+                'description' => 'Description',
+                'image' => 'avatar.png'
+            ];
+        $res = $this->post('/posts', $data);
+        $res->assertOk();
     }
 }
