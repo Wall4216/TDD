@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 // use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Models\Post;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -24,5 +25,7 @@ class ExampleTest extends TestCase
         $res = $this->post('/posts', $data);
         $res->assertOk();
         $this->assertDatabaseCount('posts', 1);
+        $post=Post::first();
+        $this->assertEquals($data['title'], $post->title);
     }
 }
