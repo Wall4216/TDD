@@ -27,5 +27,7 @@ class ExampleTest extends TestCase
         $this->assertDatabaseCount('posts', 1);
         $post=Post::first();
         $this->assertEquals($data['title'], $post->title);
+        $this->assertEquals($data['description'], $post->description);
+        $this->assertEquals($data['image'], $post->image);
     }
 }
