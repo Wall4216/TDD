@@ -21,7 +21,6 @@ class ExampleTest extends TestCase
         $this->withoutExceptionHandLing();
         Storage::fake('local');
         $file=File::create('my_image.png');
-
         $data =
             [
                 'title' => 'Some title',
@@ -34,6 +33,6 @@ class ExampleTest extends TestCase
         $post=Post::first();
         $this->assertEquals($data['title'], $post->title);
         $this->assertEquals($data['description'], $post->description);
-        $this->assertEquals($data['image/'], $file->hashName(), $post->image);
+        $this->assertEquals('/images' . $file->hashName(), $post->image);
     }
 }
