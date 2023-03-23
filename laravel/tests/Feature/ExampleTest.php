@@ -34,5 +34,6 @@ class ExampleTest extends TestCase
         $this->assertEquals($data['title'], $post->title);
         $this->assertEquals($data['description'], $post->description);
         $this->assertEquals('/images' . $file->hashName(), $post->image);
+        Storage::disk('local')->assertExists($post->image_url);
     }
 }
