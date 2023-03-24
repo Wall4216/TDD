@@ -50,4 +50,22 @@ class ExampleTest extends TestCase
         $res->assertRedirect();
         $res->assertInvalid('title');
     }
+
+    /** @test */
+
+    public function attribute_image_is_required_for_storing_post()
+    {
+
+        Storage::fake('local');
+        $file = File::create('my_image.png');
+        $data = [
+            'title' => 'fwfwf',
+            'description' => 'Description',
+            'image' => 'oioio'
+        ];
+        $res = $this->post('/posts', $data);
+
+        $res->assertRedirect();
+        $res->assertInvalid('image');
+    }
 }
