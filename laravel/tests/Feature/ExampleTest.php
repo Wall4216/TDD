@@ -18,7 +18,6 @@ class ExampleTest extends TestCase
 
     public function a_post_can_be_stored()
     {
-        $this->withoutExceptionHandLing();
         Storage::fake('local');
         $file=File::create('my_image.png');
         $data =
@@ -35,5 +34,18 @@ class ExampleTest extends TestCase
         $this->assertEquals($data['description'], $post->description);
         $this->assertEquals('/images' . $file->hashName(), $post->image);
         Storage::disk('local')->assertExists($post->image_url);
+    }
+
+    /** @test */
+
+    public function attribute_title_is_required_for_storing_post()
+    {
+        $data = [
+            'title' => 'Some title',
+            'description' => 'Description',
+        ];
+        $res = $this->post('/posts', $data);
+
+        $res->assertRedirect();
     }
 }
