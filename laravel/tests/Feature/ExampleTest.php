@@ -41,11 +41,13 @@ class ExampleTest extends TestCase
     public function attribute_title_is_required_for_storing_post()
     {
         $data = [
-            'title' => 'Some title',
+            'title' => 'fwfwf',
             'description' => 'Description',
+            'image' => ''
         ];
         $res = $this->post('/posts', $data);
 
         $res->assertRedirect();
+        $res->assertInvalid('title');
     }
 }
