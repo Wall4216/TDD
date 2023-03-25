@@ -57,7 +57,6 @@ class ExampleTest extends TestCase
     {
 
         Storage::fake('local');
-        $file = File::create('my_image.png');
         $data = [
             'title' => 'fwfwf',
             'description' => 'Description',
@@ -68,4 +67,5 @@ class ExampleTest extends TestCase
         $res->assertRedirect();
         $res->assertInvalid('image');
     }
+
 }
