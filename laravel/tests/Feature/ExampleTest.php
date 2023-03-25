@@ -67,5 +67,11 @@ class ExampleTest extends TestCase
         $res->assertRedirect();
         $res->assertInvalid('image');
     }
+    /** @test */
 
+    public function a_post_can_be_update()
+    {
+
+
+    }
 }
