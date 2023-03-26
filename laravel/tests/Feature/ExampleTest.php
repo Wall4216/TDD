@@ -16,6 +16,12 @@ class ExampleTest extends TestCase
      */
     use RefreshDatabase;
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+        Storage::fake('local');
+    }
+
     public function a_post_can_be_stored()
     {
         Storage::fake('local');
