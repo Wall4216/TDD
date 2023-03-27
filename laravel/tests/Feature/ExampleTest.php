@@ -77,7 +77,19 @@ class ExampleTest extends TestCase
 
     public function a_post_can_be_update()
     {
-
+        $this->withoutExceptionHandling();
+        $post = Post::factory()-create();
+        $file = File::create('image.png');
+        $data = [
+            'title' => 'title',
+            'description' => 'Description',
+            'image' => $file,
+        ];
+        $res = $this->patch('/posts/', $post->id, $data);
+        $updatepoost = Post::first();
+        $this->assertEquals($data['title'], $post->title);
+        $this->assertEquals($data['description'], $post->description);
+        $this->assertEquals('/images' . $file->hashName(), $post->image);
 
     }
 }
