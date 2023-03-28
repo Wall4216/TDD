@@ -92,4 +92,12 @@ class ExampleTest extends TestCase
         $this->assertEquals('/images' . $file->hashName(), $post->image);
         $this->assertEquals($post->id, $updatePost->id);
     }
+
+    public function response_for_route_posts_index_is_view_post_index_with_posts()
+    {
+        $posts = Post::factory(10)->create();
+
+        $res = $this->get('/posts');
+        $res->assertViewIs('posts.index');
+    }
 }
