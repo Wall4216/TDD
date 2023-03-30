@@ -95,9 +95,13 @@ class ExampleTest extends TestCase
 
     public function response_for_route_posts_index_is_view_post_index_with_posts()
     {
+        $this->withoutExceptionHandling();
         $posts = Post::factory(10)->create();
 
         $res = $this->get('/posts');
         $res->assertViewIs('posts.index');
+        $res->assertSeeText('View page');
+        $titles = $posts->pluck('title')->toArray();
+        $res->assertSeeText($titles);
     }
 }
