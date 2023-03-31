@@ -97,7 +97,7 @@ class ExampleTest extends TestCase
     {
         $this->withoutExceptionHandling();
         $posts = Post::factory(10)->create();
-
+        $posts->first->title = 'fpwipfwp';
         $res = $this->get('/posts');
         $res->assertViewIs('posts.index');
         $res->assertSeeText('View page');
