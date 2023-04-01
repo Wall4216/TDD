@@ -93,6 +93,7 @@ class ExampleTest extends TestCase
         $this->assertEquals($post->id, $updatePost->id);
     }
 
+    /** @test */
     public function response_for_route_posts_index_is_view_post_index_with_posts()
     {
         $this->withoutExceptionHandling();
@@ -103,5 +104,14 @@ class ExampleTest extends TestCase
         $res->assertSeeText('View page');
         $titles = $posts->pluck('title')->toArray();
         $res->assertSeeText($titles);
+    }
+
+    /** @test */
+
+    public function response_for_route_posts_show_is_view_post_index_with_post()
+    {
+        $this->withoutExceptionHandling();
+        $post=Post::factory()->create();
+
     }
 }
