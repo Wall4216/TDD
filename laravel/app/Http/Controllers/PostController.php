@@ -26,7 +26,10 @@ class PostController extends Controller
         unset($data['image']);
         Post::create($data);
     }
-
+    public function show(Post $post)
+    {
+        return view('posts.show', compact('post'));
+    }
     public function update(Post $post, UpdateRequest $request)
     {
         $data = $request->validated();

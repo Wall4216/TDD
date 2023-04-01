@@ -112,6 +112,7 @@ class ExampleTest extends TestCase
     {
         $this->withoutExceptionHandling();
         $post=Post::factory()->create();
-
+        $res = $this->get('/posts/' . $post->id);
+        $res->assertViewIs('posts.index');
     }
 }
