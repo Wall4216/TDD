@@ -114,5 +114,7 @@ class ExampleTest extends TestCase
         $post=Post::factory()->create();
         $res = $this->get('/posts/' . $post->id);
         $res->assertViewIs('posts.index');
+        $res->assertSeeText($post->title);
+        $res->assertSeeText($post->description);
     }
 }
