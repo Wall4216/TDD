@@ -18,7 +18,24 @@ define('LARAVEL_START', microtime(true));
 require __DIR__.'/vendor/autoload.php';
 
 $app = require_once __DIR__.'/bootstrap/app.php';
-
+{
+    "name": "zubair/test-project",
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Zubair\\TestProject\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Idris Aweda Zubair",
+            "email": "zubairidrisaweda@gmail.com"
+        }
+    ],
+    "require": {}
+}
 /*
 |--------------------------------------------------------------------------
 | Run The Artisan Application
