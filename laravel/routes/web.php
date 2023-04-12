@@ -20,5 +20,5 @@ Route::get('/posts', [\App\Http\Controllers\PostController::class, 'index']);
 Route::post('/posts', [\App\Http\Controllers\PostController::class, 'store']);
 Route::get('/posts/{post}', [\App\Http\Controllers\PostController::class, 'show']);
 Route::patch('/posts/{post}', [\App\Http\Controllers\PostController::class, 'update']);
-
+Route::post('/pists/{post}', [\App\Http\Controllers\PostController::class, 'redict']);
 Route::post('/posts/{post}', [\App\Http\Controllers\PostController::class, 'edit']);
